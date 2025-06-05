@@ -1,0 +1,141 @@
+/* Optimized SF Pro Text Font-Face Definitions */
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-HeavyItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('../fonts/SFProText-SemiboldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Optimized Satoshi Font-Face Definitions */
+
+@font-face {
+  font-family: 'Satoshi Regular';
+  src: url('../fonts/Satoshi-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Italic';
+  src: url('../fonts/Satoshi-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Light';
+  src: url('../fonts/Satoshi-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Light Italic';
+  src: url('../fonts/Satoshi-LightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Medium';
+  src: url('../fonts/Satoshi-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Medium Italic';
+  src: url('../fonts/Satoshi-MediumItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Bold';
+  src: url('../fonts/Satoshi-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Bold Italic';
+  src: url('../fonts/Satoshi-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Black';
+  src: url('../fonts/Satoshi-Black.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Satoshi Black Italic';
+  src: url('../fonts/Satoshi-BlackItalic.woff') format('woff');
+}
+
+body {
+  font-family: 'SF Pro Text', sans-serif;
+}

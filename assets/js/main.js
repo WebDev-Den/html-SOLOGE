@@ -1,0 +1,966 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            menu.classList.toggle('show');
+            $('main').addClass('faded');
+        });
+    }
+    $(document).on("click", ".menu .top_nav .closer", function () {
+        $('.menu').removeClass('show');
+        $('main').removeClass('faded');
+    });
+
+
+
+
+
+
+
+    $('.banner_slider,.banner_slider_middle,.catalog_slider').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false,
+        autoplay: true,
+        vertical: true,
+        pauseOnDotsHover: true,
+        pauseOnHover: true,
+        responsive: [{
+            breakpoint: 1220, settings: {
+                slidesToShow: 1, slidesToScroll: 1, infinite: true, dots: true, vertical: false
+            }
+        }]
+    });
+    $('.typical_slider').slick({
+        infinite: true, slidesToShow: 5, slidesToScroll: 1, dots: false, arrows: true, autoplay: false, responsive: [{
+            breakpoint: 1220, settings: {
+                slidesToShow: 4, slidesToScroll: 1, infinite: true, dots: false
+            }
+        }, {
+            breakpoint: 920, settings: {
+                variableWidth: true, slidesToScroll: 3, infinite: false, dots: true, arrows: false
+            }
+        }
+
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+
+    $(document).on("click", ".search_mobile", function () {
+        $('main').toggleClass('faded')
+        $('.search_mobile_block').toggleClass('active');
+    });
+    $(document).on("click", ".languages .country", function () {
+
+        $('.region').addClass('active');
+        $('main').addClass('faded');
+    });
+    $(document).on("click", ".region .back", function () {
+        $('.region').removeClass('active');
+    });
+    $(document).on("click", ".languages_mob .back", function () {
+        $('.languages_mob').removeClass('active');
+    });
+
+    $(document).on("click", ".languages .lang", function () {
+        $('.languages_mob').addClass('active');
+        $('main').addClass('faded');
+    });
+
+    $(document).on("click", ".mobile_menu .sign_in", function (event) {
+        event.preventDefault();
+        $('.profile_menu').addClass('active');
+        $('main').addClass('faded');
+    });
+    $(document).on("click", ".typical_mobile_menu .closer", function (event) {
+        $('.typical_mobile_menu').removeClass('active');
+        $('main').removeClass('faded');
+    });
+
+    $(document).on("click", ".menu .back", function () {
+        $('.menu').removeClass('sub-menu-opened');
+        $('.big_mobile_nav').removeClass('active');
+        $('li.parent').removeClass('active');
+        $('.sub-menu-mobile').removeClass('open');
+    });
+    $(document).on("click", ".filter_buttons .filter", function () {
+        $('.filter_menu').addClass('active');
+        $('main').addClass('faded')
+
+    });
+    $(document).on("click", ".filter_buttons .sort", function () {
+        $('.sort_menu').addClass('active');
+        $('main').addClass('faded')
+
+    });
+    $(document).on("click", ".big_mobile_nav .parent > a", function (event) {
+        if ($(this).parent().hasClass('parent')) {
+            event.preventDefault();
+        }
+        $('.big_mobile_nav').addClass('active');
+        $(this).parent().addClass('active');
+        $(this).parent().find('.sub-menu-mobile').addClass('open');
+        if ($(this).parent().find('.sub-menu-mobile').hasClass('open')) {
+            $('#menu').addClass('sub-menu-opened');
+        }
+
+    });
+
+
+    $(document).on("click", ".search input", function () {
+        $('main').addClass('faded');
+        $('.search_window').toggleClass('show');
+    });
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.search_window, .catalog_search_line, .hamburger, .sign_in, .menu ,.typical_mobile_menu, .search_mobile, .search_mobile_block, .filter_buttons .filter, .side_bar,.sort_menu,.sort').length) {
+            $('.search_window').removeClass('show'); // або будь-яка дія
+            $('main').removeClass('faded');
+        }
+    });
+    $(document).on("click", ".chooser", function () {
+        $(this).toggleClass("active");
+        $(this).parent().find('.opener').toggleClass('open');
+    });
+
+    $(document).on("click", ".one_acc", function () {
+        $(this).toggleClass('active');
+        $(this).find('.desc').toggleClass('show');
+    });
+
+    $(document).on("click", ".tabs_block .one_tab", function () {
+        let tab_main = $(this).attr('data-tabs');
+        $('.tabs_block .one_tab').removeClass('active');
+        $(this).addClass('active');
+        $('.one_content').removeClass('show');
+        $(this).parents('.tabs_block').find('.one_content[data-content="' + tab_main + '"]').addClass('show');
+
+
+
+    });
+
+    $('.slider_item').slick({
+        slidesToShow: 1, slidesToScroll: 1, arrows: true, fade: true, asNavFor: '.slider_nav'
+    });
+    $('.slider_nav').slick({
+        slidesToShow: 5, slidesToScroll: 1, asNavFor: '.slider_item', dots: false, focusOnSelect: true
+    });
+    $(".catalog").hover(function () {
+        $('.menu_top .wrap_catalog').addClass('open');
+        $('main').addClass('faded');
+    });
+
+    $('.menu_catalog , .catalog_search_line').on('mouseleave', function () {
+        $('.wrap_catalog').removeClass('open');
+        $('main').removeClass('faded');
+        if ($('.search_window').hasClass('show')) {
+            $('main').addClass("faded");
+        }
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+    // Плавне прокручування при кліку
+    $(".wrap_bar ul li a").on("click", function (e) {
+        e.preventDefault();
+        console.log('ok');
+        const target = $(this).attr("href"); // рядок: "#section1"
+        const $targetEl = $(target);         // jQuery-об'єкт: $('#section1')
+
+        if ($targetEl.length > 0) {
+            $("html, body").animate({
+                scrollTop: $targetEl.offset().top - 20
+            }, 500);
+        } else {
+            console.warn("Елемент не знайдено:", target);
+        }
+    });
+
+// Оновлення активного класу при скролі
+    const sections = $("h2");
+
+    $(window).on("scroll", function () {
+        let scrollTop = $(this).scrollTop();
+        let currentId = "";
+
+        sections.each(function () {
+            const sectionTop = $(this).offset().top - 100;
+            if (scrollTop >= sectionTop) {
+                currentId = $(this).attr("id");
+            }
+        });
+
+        if (currentId) {
+            $(".wrap_bar ul li").removeClass("active");
+            $('.wrap_bar ul li a[href="#' + currentId + '"]').parent("li").addClass("active");
+        }
+    });
+    $(".typical_show").hover(function () {
+        $('.show').removeClass('opened');
+        $(this).find('.show').addClass('opened');
+    });
+    $('.top_wrap, .opened').on('mouseleave', function () {
+        $('.show').removeClass('opened');
+
+    });
+    // loadSVG();
+
+    try {
+    loadSVGLocalStore();
+    initPass();
+    setTimeout(initPhone, 100);
+        }
+    catch (e) {
+        console.warn("loadSVGLocalStore is not available:", e.message);
+    }
+    $('.init_label').hover(function () {
+        $(this).addClass('active');
+        activeLabel()
+    }, function () {
+
+        $(this).removeClass('active');
+        activeLabel()
+    });
+    $(document).on('input', 'input[type="password"]', function () {
+        const passwordFields = $(this);
+        const passwordValues = passwordFields.map((_, field) => $(field).val()).get();
+
+        passwordFields.each(function (index) {
+            const password = $(this).val();
+            //     const confirmPassword = passwordValues.find((val, idx) => idx !== index);
+
+            // Правила валідації
+            const hasUpper = /[A-Z]/.test(password);
+            const hasLower = /[a-z]/.test(password);
+            const hasNumberOrSymbol = /[0-9!@#$%^&*(),.?":{}|<>]/.test(password);
+            const minLength = password.length >= 8;
+            //  const isMatching = password === confirmPassword;
+            const isMatching = true;
+
+            // Застосування стилів до поля
+            $(this).toggleClass('valid', minLength && hasUpper && hasLower && hasNumberOrSymbol && isMatching);
+            $(this).toggleClass('invalid', !(minLength && hasUpper && hasLower && hasNumberOrSymbol && isMatching));
+
+            console.log({minLength, hasUpper, hasLower, hasNumberOrSymbol, isMatching});
+            /*
+            const hint = $(this).siblings('.info_label.active');
+            if (hint.length) {
+                hint.find('.length').toggleClass('valid', minLength).toggleClass('invalid', !minLength);
+                hint.find('.uppercase').toggleClass('valid', hasUpper && hasLower).toggleClass('invalid', !(hasUpper && hasLower));
+                hint.find('.number').toggleClass('valid', hasNumberOrSymbol).toggleClass('invalid', !hasNumberOrSymbol);
+                hint.find('.match').toggleClass('valid', isMatching).toggleClass('invalid', !isMatching);
+            }
+            */
+        });
+    });
+
+    $('textarea.input[maxlength]').each(function () {
+        const $textarea = $(this);
+        const max = parseInt($textarea.attr('maxlength'), 10);
+        if (isNaN(max)) return;
+
+        const $counter = $('<span class="char-count">0/' + max + '</span>');
+        $textarea.after($counter);
+
+        $textarea.on('input', function () {
+            const length = $textarea.val().length;
+            $counter.text(length + '/' + max);
+        });
+    });
+    $('input[type="file"].file-input').on('change', function () {
+        const file = this.files[0];
+        if (!file) return;
+
+        const $input = $(this);
+        const allowedTypes = $input.data('accept') ? $input.data('accept').split(',') : [];
+        const maxSizeMb = parseFloat($input.data('max-size')) || 10;
+        const maxSize = maxSizeMb * 1024 * 1024;
+
+        if (allowedTypes.length && !allowedTypes.includes(file.type)) {
+            alert(`❌ File type "${file.type}" is not allowed.`);
+            $input.val('');
+            return;
+        }
+
+        if (file.size > maxSize) {
+            alert(`❌ File "${file.name}" is too large. Max allowed size is ${maxSizeMb} MB.`);
+            $input.val('');
+            return;
+        }
+        $(this).parent().find(".input.file span").text(file.name);
+        console.log(`✔️ File "${file.name}" accepted (${(file.size / 1024 / 1024).toFixed(2)} MB)`);
+    });
+
+    $('.custom-select2').each(function () {
+        const $select = $(this);
+        const $wrapper = $select.closest('.input');
+        const $counter = $wrapper.find('.select2-counter');
+
+        $select.select2({
+            width: '100%', closeOnSelect: false, placeholder: "", multiple: true
+        });
+
+        // Додаємо плейсхолдер як data-атрибут
+        const $selection = $select.next('.select2-container').find('.select2-selection--multiple');
+        $selection.attr('data-placeholder', $select.attr('data-placeholder') ?? 'Selected');
+
+        // Ініціалізація стану плейсхолдера і лічильника
+        updatePlaceholderState();
+        updateCounter();
+
+        // Події вибору і зняття вибору
+        $select.on('select2:select select2:unselect change', function () {
+            // updatePlaceholderState();
+            updateCounter();
+            updateMargin();
+        });
+
+        function updatePlaceholderState() {
+            if ($select.val() && $select.val().length > 0) {
+                $selection.removeClass('empty');
+            } else {
+                $selection.addClass('empty');
+            }
+        }
+
+        function updateCounter() {
+            const count = $select.val() ? $select.val().length : 0;
+            $counter.text(`${count}x`);
+        }
+
+        function updateMargin() {
+            const $wrapper = $select.closest('.select2_wrapper'); // або інший обгортувач, якщо треба
+            const $rendered = $wrapper.find('.select2-container .select2-selection__rendered');
+            if ($rendered.length) {
+                const h = $rendered.outerHeight();
+                $wrapper.css('margin-bottom', h + 'px');
+            }
+        }
+    });
+
+    $(document).on('click', '.menu-item-has-children > a', function () {
+        $(this).parent().find('>.sub-menu').toggleClass('active');
+        return false;
+    });
+
+    $(document).on('change', '.table_products .header input[name="select_oll"]', function () {
+
+        $('.table_products .item .select input[type=checkbox]').prop('checked', $(this).is(':checked'));
+        try {
+            selectAllProducts();
+        }
+        catch (e) {
+            console.warn("selectAllProducts is not available:", e.message);
+        }
+    });
+    $(document).on('change', '.table_products .item .select input[type=checkbox]', function (e) {
+        try {
+            selectAllProducts.call(this, e);
+        } catch (err) {
+            console.warn("Помилка у selectAllProducts:", err.message);
+        }
+    });
+    $(document).on('click', '.action_buttons .clear_oll', function () {
+        $('.table_products .select input[type=checkbox]').prop('checked', false);
+        try {
+            selectAllProducts();
+        }
+        catch (e) {
+            console.warn("selectAllProducts is not available:", e.message);
+        }
+    })
+    // Ініціалізація всіх табів
+    $('[data-tab]').each(function () {
+        handleTab.call(this, false); // false = не перемикаємо .active
+    });
+
+    // Клік по табу
+    $(document).on('click', '[data-tab]', function () {
+        handleTab.call(this, true); // true = перемикаємо .active
+    });
+//
+    try {
+        $('#photo-upload').mediaUploader({
+            mode: 'image',
+            maxItems: 5,
+            maxSizeMB: 10,
+            extensions: ['jpeg', 'jpg', 'png', 'gif', 'bmp'],
+            onUpload: (file, i) => console.log('Image uploaded:', file.name),
+            onMainSelect(file, i) {
+                console.log('Main selected:', file.name);
+            }
+        });
+        $('#video-upload').mediaUploader({
+            mode: 'video',
+            maxItems: 1,
+            maxSizeMB: 50,
+            extensions: ['mp4', 'mkv', 'avi', 'mpeg', 'mpg'],
+            onUpload: (file, i) => console.log('Video uploaded:', file.name),
+
+            onMainSelect(file, i) {
+                console.log('Main selected:', file.name);
+            }
+        });
+    }
+ catch (err) {
+     console.warn("Помилка у mediaUploader, mediaUploader:", err.message);
+
+ }
+
+    $(document).ready(function () {
+
+        $('.copy').on('click', function () {
+
+            const phoneText = $(this).siblings('.row_link a').text().trim();
+
+
+            const tempInput = $('<input>');
+            $('body').append(tempInput);
+            tempInput.val(phoneText).select();
+            document.execCommand('copy');
+            tempInput.remove();
+
+
+            alert('Скопійовано: ' + phoneText);
+        });
+
+
+        $(document).ready(function () {
+            function initSlider() {
+                const $slider = $('.vendors_result');
+
+                // Якщо елемента немає — нічого не робимо
+                if ($slider.length === 0) return;
+
+                // Якщо є клас not_slick — не ініціалізуємо слайдер
+                if ($slider.hasClass('not_slick')) {
+                    // Але якщо слайдер вже був ініціалізований — відключаємо
+                    if ($slider.hasClass('slick-initialized')) {
+                        $slider.slick('unslick');
+                    }
+                    return;
+                }
+
+                if ($(window).width() < 1150) {
+                    if (!$slider.hasClass('slick-initialized')) {
+                        $slider.slick({
+                            infinite: true,
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            dots: false,
+                            arrows: true,
+                            autoplay: false,
+                            responsive: [
+                                {
+                                    breakpoint: 920,
+                                    settings: {
+                                        slidesToScroll: 3,
+                                        variableWidth: true,
+                                        infinite: true,
+                                        dots: true,
+                                        arrows: false
+                                    }
+                                },
+                                {
+                                    breakpoint: 480,
+                                    settings: {
+                                        slidesToScroll: 3,
+                                        variableWidth: true,
+                                        infinite: true,
+                                        dots: true,
+                                        arrows: false
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                } else {
+                    if ($slider.hasClass('slick-initialized')) {
+                        $slider.slick('unslick');
+                    }
+                }
+            }
+
+            initSlider();
+
+            $(window).resize(function () {
+                initSlider();
+            });
+        });
+
+
+    function selectAllProducts() {
+        const $table = $('.table_products');
+        const $checkboxes = $table.find('.item .select input[type="checkbox"]');
+        const $checked = $checkboxes.filter(':checked');
+        const checkedCount = $checked.length;
+
+        // Оновлення стану чекбокса "вибрати все"
+        const $selectAll = $table.find('.header input[name="select_oll"]');
+        $selectAll.prop('checked', checkedCount === $checkboxes.length);
+
+        // Оновлення лічильника вибраних елементів
+        const $label = $('.action_buttons .underline');
+        const template = $label.data('text') || '';
+        $label.text(template.replace('%s', checkedCount));
+
+        // Відображення або приховування блоку з кнопками
+        $('.action_buttons').toggleClass('hidden', checkedCount === 0);
+
+
+    }
+
+    function handleTab(shouldToggle = true) {
+        const $tab = $(this);
+        const key = $tab.data('tab');
+        const $content = $(`[data-tab-content="${key}"]`);
+
+        if (shouldToggle) {
+            // Вимкнути всі інші таби та контент
+            //    $('[data-tab]').not($tab).removeClass('active');
+            //     $('[data-tab-content]').not($content).removeClass('active');
+
+            // Перемкнути поточний
+            $tab.toggleClass('active');
+        }
+
+        // Відображення або приховування відповідного контенту
+        const isActive = $tab.hasClass('active');
+        $content.toggleClass('active', isActive);
+    }
+
+    function activeLabel() {
+        const active_lbl = $(".init_label.active");
+        if (active_lbl.length === 0) {
+            $('.info_label').removeClass('active');
+        } else {
+            const id = active_lbl.attr('data-label');
+            $(`.info_label:not([data-label=${id}])`).removeClass('active');
+
+            const active = $(`.info_label[data-label=${id}]`);
+            if (active.length > 0) {
+                const position = $(active_lbl).offset();
+
+                active.css({
+                    'top': position.top - 15, 'left': position.left + 35
+                }).addClass('active');
+            }
+        }
+    }
+
+    function initPhone() {
+        const input = document.querySelector("input[type=tel]");
+        if (input == null) return;
+        const iti = window.intlTelInput(input, {
+            initialCountry: "ua",
+            separateDialCode: true,
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js"
+        });
+
+        const flagContainer = document.querySelector(".iti__selected-flag");
+        flagContainer.classList.add("input");
+
+        const updateMask = () => {
+            if (typeof $.fn.inputmask !== "undefined") {
+                const selectedCountry = iti.getSelectedCountryData();
+                //console.log(selectedCountry, $(iti).parent(".form_block").find("input.mask"));
+                const dialCode = selectedCountry.dialCode;
+                let maskPattern = "+" + dialCode + " (999) 999-9999"; // Приклад маски
+
+                (async () => {
+                    input.value = "";
+                    const phoneMaskGenerator = new CountryPhoneMask();
+                    const res = await phoneMaskGenerator.getMask(selectedCountry.iso2);
+                    //    console.log(res);
+                    if (res && res?.mask_out) {
+                        maskPattern = res.mask_out;
+                    }
+
+                    const placeholder = res.mask_out.replaceAll('9', '_');
+                    input.placeholder = placeholder;
+                    $(input)?.closest(".form_block")?.find("input.mask")?.val(res.cc);
+                    $(input).inputmask({
+                        mask: maskPattern, placeholder: placeholder, clearIncomplete: true
+                    });
+
+                })();
+
+
+            } else {
+                console.error("Inputmask не завантажений.");
+            }
+        };
+
+        // Ініціалізація маски при завантаженні сторінки
+        input.addEventListener("load", updateMask);
+        updateMask();
+
+        // Оновлення маски при зміні країни
+        input.addEventListener("countrychange", updateMask);
+    }
+
+    async function loadSVG() {
+        const images = document.querySelectorAll('img[src$=".svg"]');
+
+        for (const img of images) {
+            const response = await fetch(img.src);
+
+            if (response.ok) {
+                const svgText = await response.text();
+                const parser = new DOMParser();
+                const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+                const svgElement = svgDoc.querySelector('svg');
+
+                if (svgElement) {
+                    for (const attr of img.attributes) {
+                        if (attr.name !== 'src') {
+                            svgElement.setAttribute(attr.name, attr.value);
+                        }
+                    }
+
+                    img.replaceWith(svgElement);
+                }
+            }
+        }
+    }
+
+
+    async function loadSVGLocalStore() {
+        const images = document.querySelectorAll('img[src$=".svg"]');
+
+        for (const img of images) {
+            const cachedSVG = localStorage.getItem(img.src);
+
+            if (cachedSVG) {
+                // Якщо SVG є у localStorage, використовуємо його
+                const parser = new DOMParser();
+                const svgDoc = parser.parseFromString(cachedSVG, 'image/svg+xml');
+                const svgElement = svgDoc.querySelector('svg');
+
+                if (svgElement) {
+                    for (const attr of img.attributes) {
+                        if (attr.name !== 'src') {
+                            svgElement.setAttribute(attr.name, attr.value);
+                        }
+                    }
+                    img.replaceWith(svgElement);
+                }
+                continue;
+            }
+
+            // Якщо SVG немає в localStorage, завантажуємо його та зберігаємо
+            try {
+                const response = await fetch(img.src);
+
+                if (response.ok) {
+                    const svgText = await response.text();
+                    localStorage.setItem(img.src, svgText); // Зберігаємо SVG в localStorage
+
+                    const parser = new DOMParser();
+                    const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+                    const svgElement = svgDoc.querySelector('svg');
+
+                    if (svgElement) {
+                        for (const attr of img.attributes) {
+                            if (attr.name !== 'src') {
+                                svgElement.setAttribute(attr.name, attr.value);
+                            }
+                        }
+
+                        img.replaceWith(svgElement);
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading SVG:', error);
+            }
+        }
+    }
+
+
+    class CountryPhoneMask {
+        constructor(storageKey = "phoneMasks") {
+            this.storageKey = storageKey;
+            this.data = this.loadData();
+        }
+
+        async loadData() {
+            const storedData = localStorage.getItem(this.storageKey);
+            if (storedData) {
+                return JSON.parse(storedData);
+            } else {
+                await this.fetchAndStoreData();
+                return JSON.parse(localStorage.getItem(this.storageKey));
+            }
+        }
+
+        transformPhoneMasks(phoneData) {
+
+            for (const iso in phoneData) {
+                if (phoneData.hasOwnProperty(iso)) {
+                    const country = phoneData[iso];
+                    const {cc, mask} = country;
+                    const maskParts = mask.split(cc);
+                    if (maskParts.length > 1) {
+                        country.mask_out = maskParts[1].replace(/\b0+\b/g, match => match.replace(/0/g, '9'));
+                    } else {
+                        country.mask_out = mask.replace(/0/g, '9');
+                    }
+                }
+            }
+
+            return phoneData;
+        }
+
+        async fetchAndStoreData() {
+            const jsonUrl = "https://raw.githubusercontent.com/vueform/international-phone-masks/main/masks.json";
+            try {
+                const response = await fetch(jsonUrl);
+                if (!response.ok) {
+                    throw new Error(`Помилка завантаження: ${response.statusText}`);
+                }
+
+                const masks = await response.json();
+                localStorage.setItem(this.storageKey, JSON.stringify(masks));
+                console.log("Маски телефонів завантажено та збережено:", masks);
+            } catch (error) {
+                console.error("Помилка завантаження масок телефонів:", error);
+            }
+        }
+
+        async getMask(dialCode) {
+            let data = await this.data;
+            data = this.transformPhoneMasks(data);
+            dialCode = dialCode.toUpperCase();
+            return data[dialCode] ?? false;
+        }
+
+
+    }
+
+
+    function initPass() {
+        const passwordInputs = document.querySelectorAll('input[data-nead-show="1"]');
+        passwordInputs.forEach(passwordInput => {
+            if (passwordInput.parentElement.classList.contains("input-wrapper")) return;
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("input-wrapper");
+            passwordInput.parentElement.insertBefore(wrapper, passwordInput);
+            wrapper.appendChild(passwordInput);
+            const toggleButton = document.createElement("span");
+            toggleButton.classList.add("toggle-password");
+            wrapper.appendChild(toggleButton);
+            toggleButton.addEventListener("click", function () {
+                passwordInput.type = passwordInput.type === "text" ? "password" : "text";
+            });
+        });
+    }
+
+
+    (function ($) {
+        $.fn.mediaUploader = function (options) {
+            const settings = $.extend({
+                mode: 'image', // 'image' or 'video'
+                maxItems: 1, maxSizeMB: 10, extensions: [], onUpload: null, onMainSelect: null
+            }, options);
+
+            const isImage = settings.mode === 'image';
+
+            function getVideoThumbnail(file, seekTo = 1.0) {
+                return new Promise((resolve, reject) => {
+                    const video = document.createElement('video');
+                    const canvas = document.createElement('canvas');
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        video.src = e.target.result;
+                        video.crossOrigin = 'anonymous';
+                        video.load();
+
+                        video.onloadedmetadata = function () {
+                            if (seekTo > video.duration) seekTo = 0;
+                            video.currentTime = seekTo;
+                        };
+
+                        video.onseeked = function () {
+                            canvas.width = video.videoWidth;
+                            canvas.height = video.videoHeight;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                            resolve(canvas.toDataURL('image/jpeg'));
+                        };
+
+                        video.onerror = () => reject('Video error');
+                    };
+
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            return this.each(function () {
+                const $container = $(this).addClass('media-uploader');
+                const files = [];
+                let mainIndex = null;
+
+                const render = () => {
+                    $container.empty();
+
+                    for (let i = 0; i < settings.maxItems; i++) {
+                        if (files[i]) {
+                            const file = files[i];
+                            const $item = $('<div class="media-item"></div>');
+
+                            if (i === mainIndex && files.filter(Boolean).length > 1) {
+                                $item.addClass('main');
+                                $item.append(`<div class="main-badge btn orange">MAIN ${isImage ? 'Photo' : 'Video'}</div>`);
+                            }
+
+                            // Preview або заглушка
+                            if (file.preview || (isImage && file.url)) {
+                                $item.append(`<img src="${file.preview || file.url}" alt="Media ${i + 1}">`);
+                            } else {
+                                const noneClass = isImage ? 'none image' : 'none video';
+                                $item.append(`<div class="${noneClass}"></div>`);
+                            }
+
+                            $item.append(`<button class="remove-btn" data-index="${i}">×</button>`);
+                            $item.append(`<div class="make-main" data-index="${i}"></div>`);
+                            $container.append($item);
+                        } else {
+                            const $add = $(`
+            <div class="media-item add-slot">
+              <input type="file" accept="${settings.extensions.map(ext => '.' + ext).join(',')}" data-index="${i}">
+              <span>Add ${isImage ? 'Photo' : 'Video'}</span>
+            </div>
+          `);
+                            $container.append($add);
+                        }
+                    }
+                };
+
+                // Upload
+                $container.on('change', 'input[type="file"]', function (e) {
+                    const index = $(this).data('index');
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    const ext = file.name.split('.').pop().toLowerCase();
+                    if (!settings.extensions.includes(ext)) {
+                        alert(`Only ${settings.extensions.join(', ').toUpperCase()} files are allowed`);
+                        return;
+                    }
+
+                    if (file.size > settings.maxSizeMB * 1024 * 1024) {
+                        alert(`Max file size is ${settings.maxSizeMB}MB`);
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = async function (event) {
+                        const baseData = {
+                            url: event.target.result, file, type: file.type
+                        };
+
+                        if (!isImage) {
+                            try {
+                                const thumbnail = await getVideoThumbnail(file);
+                                baseData.preview = thumbnail;
+                            } catch (err) {
+                                console.warn('Thumbnail error:', err);
+                                // preview залишиться undefined => буде вставлений .none.video
+                            }
+                        }
+
+                        files[index] = baseData;
+                        if (mainIndex === null) mainIndex = index;
+
+                        render();
+
+                        if (typeof settings.onUpload === 'function') {
+                            settings.onUpload(file, index);
+                        }
+                    };
+
+                    reader.readAsDataURL(file);
+                });
+
+                // Remove
+                $container.on('click', '.remove-btn', function () {
+                    const index = $(this).data('index');
+                    files.splice(index, 1);
+                    if (mainIndex === index) {
+                        mainIndex = files.findIndex(f => f);
+                        if (typeof settings.onMainSelect === 'function' && files[mainIndex]) {
+                            settings.onMainSelect(files[mainIndex].file, mainIndex);
+                        }
+                    }
+                    render();
+                });
+
+                // Make main
+                $container.on('click', '.make-main', function () {
+                    const index = $(this).data('index');
+                    if (files[index]) {
+                        mainIndex = index;
+                        render();
+                        if (typeof settings.onMainSelect === 'function') {
+                            settings.onMainSelect(files[index].file, index);
+                        }
+                    }
+                });
+
+                render();
+            });
+        };
+
+
+    })(jQuery);
+        try {
+            $('.order_by').select2({
+                width: '100%', closeOnSelect: false, placeholder: "Sort by"
+            });
+        }
+        catch (err){
+            console.warn("Помилка у select2:", err.message);
+        }
+
+        $(function () {
+            const $header = $('header');
+
+            function checkScroll() {
+                if ($(window).scrollTop() > 50) {
+                    $header.addClass('stuck');
+                } else {
+                    $header.removeClass('stuck');
+                }
+            }
+
+            $(window).on('scroll load resize', checkScroll);
+        });
+});});
+
+
+
+/*
+$("#single").select2({
+    placeholder: "Sort by",
+    allowClear: false
+});
+*/
