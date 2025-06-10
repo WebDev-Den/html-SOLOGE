@@ -269,16 +269,16 @@
         <div class="row">
             <div class="tabs_block search_result">
                 <div class="tabs_top">
-                    <div class="one_tab active" data-tabs="1">
+                    <div class="one_tab active" data-tab="1">
                         <p>View all  (<span>252</span>)</p>
                     </div>
-                    <div class="one_tab" data-tabs="2">
+                    <div class="one_tab" data-tab="2">
                         <p>Technology  (<span>21</span>)</p>
                     </div>
-                    <div class="one_tab" data-tabs="3">
+                    <div class="one_tab" data-tab="3">
                         <p>Software (<span>13</span>)</p>
                     </div>
-                    <div class="one_tab" data-tabs="4">
+                    <div class="one_tab" data-tab="4">
                         <p>Sales  (<span>13</span>)</p>
                     </div>
 
@@ -290,20 +290,18 @@
                         <input type="text" placeholder="Search...">
                         <button><img src="/assets/images/icons/iconSearch.svg" alt=""></button>
                         </div>
-                        <div class="form_block order_by_wrapper">
-                        <div class="input-wrapper">
-                            <select class="order_by">
-                                <option disabled selected>Sort by</option>
-                                <option>Data</option>
-                                <option>Time</option>
-                                <option>price</option>
+                        <div class="select_block">
+                            <select id="single" class="js-states form-control" placeholder="Sort by">
+                                <option></option>
+                                <option>Java</option>
+                                <option>Javascript</option>
+                                <option>PHP</option>
+                                <option>Visual Basic</option>
                             </select>
-                        </div>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+
                 <div class="tabs_content search_results">
                     <div class="one_content show" data-content="1">
                         <div class="container">
@@ -371,7 +369,8 @@
 
                 </div>
             </div>
-
+        </div>
+    </div>
 </main>
 <footer>
     <div class="container">
@@ -419,9 +418,10 @@
 </footer>
 <!--connect-->
 <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script defer src="assets/js/main.min.js"></script>
 
 <!--connect-->

@@ -256,6 +256,7 @@
     <section class="container">
 
         <h3 class="title_page">My account</h3>
+        <h3 class="title_page mobile">Menu</h3>
         <div class="main_catalog is_login">
 
             <div class="info">
@@ -297,12 +298,30 @@
             </div>
 
             <div class="personal_user form_container ">
+
+                <div class="btn_mobile mobile">
+
+
+                    <h3 class="title_page">Products</h3>
+
+                    <div class="form_block order_by_wrapper">
+                        <div class="input-wrapper">
+                            <select class="order_by">
+                                <option disabled selected>View all</option>
+                                <option>Delete products</option>
+                                <option>Enable products</option>
+                                <option>Disable products</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="products_buttons form_container">
                     <div class="btn orange add_products">Add a product</div>
-                    <div class="form_block search_wrapper">
+                    <div class="form_block search_wrapper desktop">
                         <div class="input-wrapper"><input type="search" placeholder="Search..." required=""></div>
                     </div>
-                    <div class="form_block order_by_wrapper">
+                    <div class="form_block order_by_wrapper desktop">
                         <div class="input-wrapper">
                             <select class="order_by">
                                 <option disabled selected>Sort by</option>
@@ -312,8 +331,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="mobile btns_filter">
+                        <div class="btn_filter"><img src="assets/images/icons/vendor_filter.svg" alt=""></div>
+                        <div class="btn_filter"><img src="assets/images/icons/vendor_sort.svg" alt=""></div>
+                    </div>
                 </div>
-                <div class="filter_buttons form_container">
+                <div class="filter_buttons form_container desktop">
                     <div class="form_block order_by_wrapper">
                         <div class="input-wrapper">
                             <select class="order_by">
@@ -393,7 +416,11 @@
                         <img src="assets/images/icons/product_filter.svg" alt="">
                     </div>
                 </div>
-                <div class="action_buttons hidden">
+                <div class="form_block search_wrapper mobile">
+                    <div class="input-wrapper"><input type="search" placeholder="Search..." required=""></div>
+                </div>
+
+                <div class="action_buttons hidden desktop">
                     <div class="btns">
                         <span data-text="%s items selected" class="underline">0 items selected</span>
                         <div class="icons clear_oll"><img src="assets/images/icons/close.svg"></div>
@@ -413,9 +440,8 @@
                         </div>
                     </div>
                 </div>
-
                 <ul class="table_products">
-                    <li class="header">
+                    <li class="header desktop">
                         <div class="select"><label><input name="select_oll" type="checkbox"><span></span></label></div>
                         <div class="name">Product name</div>
                         <div class="date">Creation date</div>
@@ -673,7 +699,6 @@
                         </div>
                     </li>
                 </ul>
-
                 <div class="loader"></div>
             </div>
         </div>
